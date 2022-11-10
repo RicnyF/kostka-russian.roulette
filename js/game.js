@@ -4,9 +4,10 @@ var zivoty = 3;
 var coins = 0;
 var win = 20;
 var hody = [];
+//event listeners
 one.addEventListener("click", () => {
     ammo=0;
-  
+
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
 two.addEventListener("click", () => {
@@ -35,13 +36,14 @@ document.getElementById('game').addEventListener('click',
         console.log(hody);
     }
 );
-
+//function
 function hod(ammo) {
     var user = Math.ceil(Math.random() * 6);
     var game = [];
     var gamenumber;
     var naboje= ammo+1;
     var indexnumber =0;
+    var opakovani= 0;
     gamenumber=Math.ceil(Math.random() * 6)
     game.push(gamenumber);
     for (ammo; ammo>0; ammo--){
@@ -50,25 +52,48 @@ function hod(ammo) {
     }while(gamenumber == game[0]|gamenumber == game[1]|gamenumber == game[2]|gamenumber == game[3]|gamenumber == game[4])
     game.push(gamenumber) 
 }
-do{
+for (indexnumber;indexnumber<=naboje;indexnumber++){
     if(user == game[indexnumber]){
         zivoty--;
-        coins-=10*naboje
-        win+=naboje;
-   }
-    indexnumber++;
-}while(indexnumber<=naboje)
-coins+=10*naboje;
-win-=naboje;
+    setTimeout(() => {
+            gameImage.src = "img/1r6M.gif";
+        }, 600);
+        setTimeout(() => {
+            gameImage.src = "img/shooting.png";
+        }, 1800);
+        setTimeout(() => {
+            gameImage.src = "img/default.png";
+    
+        }, 1900);
+        opakovani++;
+    }
+}
 
-
+if (opakovani == 0){
     setTimeout(() => {
         gameImage.src = "img/1r6M.gif";
     }, 600);
     setTimeout(() => {
         gameImage.src = "img/default.png";
-       
+    
     }, 1800);
+    opakovani--;
+    coins+=naboje*naboje*10;
+win-=naboje;
+}
+
+if(zivoty <= 0){
+    setTimeout(() => {
+        gameImage.src = "img/death.gif";
+    
+    }, 2000);
+}
+if (win<= 0){
+    setTimeout(() => {
+        gameImage.src = "img/win.gif";
+    
+    }, 2100);
+}
 
 console.log(game[0]+" prvni cislo pocitace")
 console.log(game[1]+" druhe cislo pocitace")
@@ -82,5 +107,6 @@ setTimeout(() => {
 document.getElementById('zivoty').innerHTML = `Počet životů =${zivoty}`;
 document.getElementById('coins').innerHTML = `Počet coinů =${coins}`;
 document.getElementById('win').innerHTML = `Počet nábojů do výhry =${win}`;
-}, 1800);
+}, 1900);
+
 }
