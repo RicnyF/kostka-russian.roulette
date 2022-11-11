@@ -7,30 +7,53 @@ var hody = [];
 //event listeners
 one.addEventListener("click", () => {
     ammo=0;
+    document.getElementById("one").disabled = true;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("four").disabled = false;
+    document.getElementById("five").disabled = false;
 
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
 two.addEventListener("click", () => {
     ammo=1;
-    
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = true;
+    document.getElementById("three").disabled = false;
+    document.getElementById("four").disabled = false;
+    document.getElementById("five").disabled = false;
+
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
 three.addEventListener("click", () => {
     ammo=2;
-    
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = true;
+    document.getElementById("four").disabled = false;
+    document.getElementById("five").disabled = false;
+
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
 four.addEventListener("click", () => {
     ammo=3;
-    console.log(ammo);
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("four").disabled = true;
+    document.getElementById("five").disabled = false;
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
 five.addEventListener("click", () => {
     ammo=4;
-    console.log(ammo);
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("four").disabled = false;
+    document.getElementById("five").disabled = true;
     document.getElementById('naboje').innerHTML = `Počet nábojů = ${ammo+1}`;
 });
-document.getElementById('game').addEventListener('click',
+document.getElementById('gameButton').addEventListener('click',
     function(){
         hod(ammo);
         console.log(hody);
@@ -46,15 +69,25 @@ function hod(ammo) {
     var opakovani= 0;
     gamenumber=Math.ceil(Math.random() * 6)
     game.push(gamenumber);
+    
+
+
     for (ammo; ammo>0; ammo--){
     do{
     gamenumber=Math.ceil(Math.random() * 6)
     }while(gamenumber == game[0]|gamenumber == game[1]|gamenumber == game[2]|gamenumber == game[3]|gamenumber == game[4])
     game.push(gamenumber) 
 }
+document.getElementById("gameButton").disabled = true;
+    document.getElementById("one").disabled = true;
+    document.getElementById("two").disabled = true;
+    document.getElementById("three").disabled = true;
+    document.getElementById("four").disabled = true;
+    document.getElementById("five").disabled = true;
 for (indexnumber;indexnumber<=naboje;indexnumber++){
     if(user == game[indexnumber]){
         zivoty--;
+        
     setTimeout(() => {
             gameImage.src = "img/1r6M.gif";
         }, 600);
@@ -63,9 +96,16 @@ for (indexnumber;indexnumber<=naboje;indexnumber++){
         }, 1800);
         setTimeout(() => {
             gameImage.src = "img/default.png";
-    
+            document.getElementById("gameButton").disabled = false;
+        document.getElementById("one").disabled = false;
+        document.getElementById("two").disabled = false;
+        document.getElementById("three").disabled = false;
+        document.getElementById("four").disabled = false;
+        document.getElementById("five").disabled = false;
         }, 1900);
         opakovani++;
+        
+    
     }
 }
 
@@ -76,6 +116,12 @@ if (opakovani == 0){
     setTimeout(() => {
         gameImage.src = "img/default.png";
     
+        document.getElementById("gameButton").disabled = false;
+        document.getElementById("one").disabled = false;
+        document.getElementById("two").disabled = false;
+        document.getElementById("three").disabled = false;
+        document.getElementById("four").disabled = false;
+        document.getElementById("five").disabled = false;
     }, 1800);
     opakovani--;
     coins+=naboje*naboje*10;
@@ -83,15 +129,29 @@ win-=naboje;
 }
 
 if(zivoty <= 0){
+    document.getElementById("gameButton").disabled = true;
+    document.getElementById("one").disabled = true;
+    document.getElementById("two").disabled = true;
+    document.getElementById("three").disabled = true;
+    document.getElementById("four").disabled = true;
+    document.getElementById("five").disabled = true;
     setTimeout(() => {
         gameImage.src = "img/death.gif";
-    
     }, 2000);
+    setTimeout(() => {
+        gameImage.src = "img/death.png";
+
+    }, 5800);
 }
 if (win<= 0){
     setTimeout(() => {
         gameImage.src = "img/win.gif";
-    
+        document.getElementById("gameButton").disabled = true;
+        document.getElementById("one").disabled = true;
+        document.getElementById("two").disabled = true;
+        document.getElementById("three").disabled = true;
+        document.getElementById("four").disabled = true;
+        document.getElementById("five").disabled = true; 
     }, 2100);
 }
 
