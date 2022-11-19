@@ -1,0 +1,47 @@
+h3
+{
+    color: red;
+    border: solid 1mm black;
+ background-color: white;
+}
+h1{
+    color: red;
+ background-color: white;
+padding: 2.5%;
+border: solid 1mm black;
+font-size: 1.5cm;
+}
+body{
+    background-color: gray;
+    
+}
+.status{
+    color: white;
+}
+p{
+    color:black
+}
+.border{
+    border: solid 1mm black;
+    background-color: white; 
+}
+table, th, td {
+    border:0.5mm solid black;
+    background-color: white;
+  }
+  table{
+    width: 30cm;
+  }
+.btn{
+    margin: 1mm;
+}
+
+main{
+    padding: 7.5%;
+}
+.winloss{
+    font-size: 1cm;
+    background-color: white;
+    margin-left: 35%;
+    margin-right: 35%;
+}
